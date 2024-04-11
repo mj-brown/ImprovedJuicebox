@@ -1,8 +1,13 @@
 const { Client } = require('pg');
 
+const connectionString = process.env.DATABASE_URL || 'https://localhost:5432/Improved_Juicebox';
+
 const client = new Client({
-    connectionString: process.env.DATABASE_URL || 'postgres://localhost:5432/Improved_Juicebox',
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+  connectionString,
+  ssl:
+    process.env.NODE_ENV === 'production'
+      ? { rejectUnauthorized: false }
+      : undefined,
 });
 
 module.exports = client;
