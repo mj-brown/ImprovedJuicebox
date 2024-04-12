@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+const apiRouter = require('./api');
 
 //Set default port or use the port from the .env file.
 const PORT = process.env.PORT || 3000;
@@ -21,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(morgan('dev'));
 
 // Connecting to the database client
-const {client} = require('./db');
+const client = require('./db/index');
 client.connect();
 
 // Route handling
