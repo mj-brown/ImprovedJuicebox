@@ -1,7 +1,7 @@
 const express = require("express");
 const postsRouter = express.Router();
 const { requireUser, requiredNotSent } = require("./utils");
-const { createPost, getAllPosts, updatePost, getPostById, deletePost } = require("../db");
+const { createPost, getAllPosts, updatePost, getPostById, deletePost } = require("../db/dbMethods");
 
 // GET /api/posts
 postsRouter.get("/", async (req, res, next) => {

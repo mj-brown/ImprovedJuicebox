@@ -19,27 +19,33 @@ const AddPost = () => {
     };
 
     return (
-        <div>
-            <form 
-                onSubmit={(e) => {
-                    e.preventDefault();
-                    handleSubmit();
-                }}
-            >
-                <label>
-                    Title:
-                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-                </label>
-                <label>
-                    Content:
-                    <textarea value={content} onChange={(e) => setContent(e.target.value)} required />
-                </label>
-                <label>
-                    Tags (comma separated):
-                    <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} />
-                </label>
-                <button type="submit">Add Post</button>
-            </form>
+        <div className='addPostContainer'>
+            <div className='sectionTitleContainer'>
+                <h3 className='sectionTitle'>Add A New Post</h3>
+            </div>
+            <div className='addPostFormContainer'>
+                <form 
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSubmit();
+                    }}
+                    className='addPostForm'
+                >
+                    <label className='addPostHeading'>
+                        Title:
+                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required className='postTitleInput' />
+                    </label>
+                    <label className='addPostHeading'>
+                        Content:
+                        <textarea value={content} onChange={(e) => setContent(e.target.value)} required className='postContentInput' />
+                    </label>
+                    <label className='addPostHeading'>
+                        Tags (comma separated):
+                        <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} className='postTagInput'/>
+                    </label>
+                    <button type="submit" className='appButton'>Add Post</button>
+                </form>
+            </div>
         </div>
     )
 };

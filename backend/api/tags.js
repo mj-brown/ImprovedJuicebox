@@ -1,6 +1,6 @@
 const express = require("express");
 const tagsRouter = express.Router();
-const { getPostsByTagName, getAllTags } = require("../db");
+const { getPostsByTagName, getAllTags } = require("../db/dbMethods");
 
 // GET /api/tags
 tagsRouter.get("/", async (req, res, next) => {

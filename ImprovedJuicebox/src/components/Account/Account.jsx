@@ -19,21 +19,34 @@ const Account = ({ userToken }) => {
   if (error) return `Error: ${error.message}`;
 
   return (
-    <div>
-      <h2>Account Details</h2>
+    <div className="accountDetailsContainer">
+      <div className="titleContainer">
+        <h2 className="pageTitle">Account Details</h2>
+      </div>
       {accountData ? (
-        <div>
-          <p>User Id: {accountData.id}</p>
-          <p>Username: {accountData.username}</p>
-          <p>Name: {accountData.name}</p>
-          <p>Location: {accountData.location}</p>
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <th>User Id:</th>
+              <th>Username:</th>
+              <th>Name:</th>
+              <th>Location:</th>
+            </tr>
+            <tr>
+              <td>{accountData.id}</td>
+              <td>{accountData.username}</td>
+              <td>{accountData.name}</td>
+              <td>{accountData.location}</td>
+            </tr>
+          </tbody>
+        </table>
       ) : null}
       <div>
-        <button onClick={handleClose}>Close</button>
+        <button onClick={handleClose} className="appButton">Close</button>
       </div>
     </div>
   );
+  
 };
 
 export default Account;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../features/api/apiSlice";
 
-const Login = ({ token, onClose }) => {
+const Login = ({ token }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -21,16 +21,17 @@ const Login = ({ token, onClose }) => {
   
     const handleLogin = async () => {
       try {
-        const credentials = { username, password };
+        const userData = { username, password };
   
-        const response = await loginUser(credentials).unwrap();
+        const response = await loginUser(userData).unwrap();
   
         if (response.token) {
           setUserToken(response.token);
           // Clear form fields after successful login
           setUsername("");
           setPassword("");
-          onClose();
+          console.log("Successfully logged in", response)
+          navigate("/");
         } else {
           console.error("Login failed: Unexpected response structure");
         }
@@ -44,33 +45,35 @@ const Login = ({ token, onClose }) => {
     };
       
     return (
-      <div>
-        <div>
-          <h2>Login</h2>
+      <div className="loginContainer">
+        <div className="titleContainer">
+          <h2 className="pageTitle">Login</h2>
         </div>
-        <div>
+        <div className="loginFormContainer">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               handleLogin();
             }}
+            className="loginForm"
           >
             <div>
               <label
-                htmlFor="email">
+                htmlFor="username" className="loginHeading">
                 Username:
               </label>
               <input
                 type="text"
-                id="email"
+                id="username"
                 value={username}
                 onChange={handleUsernameChange}
                 aria-label="Username"
-                required/>
+                required
+                className="usernameLoginInput"/>
             </div>
             <div>
               <label
-                htmlFor="password">
+                htmlFor="password" className="loginHeading">
                 Password:
               </label>
               <input
@@ -79,26 +82,28 @@ const Login = ({ token, onClose }) => {
                 value={password}
                 onChange={handlePasswordChange}
                 required
+                className="passwordLoginInput"
                 />
             </div>
-            <div>
+            <div  className="loginButtonContainer">
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
+                className="appButton"
               >
                 {showPassword ? "Hide" : "Show"} Password
               </button>
-            </div>
-            <div>
               <button
                 type="button"
                 onClick={handleLogin}
+                className="appButton"
               >
                 Login
               </button>
               <button
                 name="cancel"
                 onClick={handleClose}
+                className="appButton"
               >
                 Cancel
               </button>

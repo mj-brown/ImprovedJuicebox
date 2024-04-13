@@ -1,12 +1,8 @@
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
-import Register from "../Register/Register";
-import Login from "../Login/Login"
 import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ handleSearch, setUserToken }) => {
-    const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     
     const navigate = useNavigate();
     
@@ -23,23 +19,24 @@ const NavBar = ({ handleSearch, setUserToken }) => {
     };
   
     return (
-      <div>
-        <h1>
-          JuceBx
-        </h1>
-          <div>
+      <div className="navBarContainer">
+        <div className="appTitleContainer">
+          <h1 className="appTitle">JuceBx</h1>
+        </div>
+          <div className="searchBarContainer">
             <SearchBar handleSearch={handleSearch} />
           </div>
-          <div>
-            <button onClick={handleAccount}>
+          <div className="navBarButtonContainer">
+            <button onClick={handleAccount} className="appButton">
               Account
             </button>
               <button
-                onClick={handleSignup}>
+                onClick={handleSignup} className="appButton">
                 Sign up
               </button>
               <button
                 onClick={handleLogin}
+                className="appButton"
               >
                 Login
               </button>

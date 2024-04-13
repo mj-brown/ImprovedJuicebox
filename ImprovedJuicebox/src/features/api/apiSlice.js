@@ -15,13 +15,13 @@ export const apiSlice = createApi({
       query: (id) => `/posts/${id}`,
     }),
     loginUser: builder.mutation({
-      query: (credentials) => ({
+      query: (userData) => ({
         url: "/users/login",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: credentials,
+        body: userData,
       }),
     }),
     registerUser: builder.mutation({
@@ -36,7 +36,7 @@ export const apiSlice = createApi({
     }),
     getAccountDetails: builder.query({
       query: (userToken) => ({
-        url: "/users/me",
+        url: "/users/:userId",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -45,13 +45,13 @@ export const apiSlice = createApi({
       }),
     }),
     createPost: builder.mutation({
-      query: ({ title, content, tags }) => ({
+      query: (userData) => ({
         url: "/posts",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: { title, content, tags },
+        body: { userData },
       }),
     }),
   }),

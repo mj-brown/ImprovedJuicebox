@@ -80,11 +80,12 @@ async function getUserById(userId) {
       };
     }
 
-    return user;
+    return user; // Return the fetched user data
   } catch (error) {
     throw error;
   }
 }
+
 
 async function getUserByUsername(username) {
   try {
@@ -322,7 +323,7 @@ async function getPostsByTagName(tagName) {
 
 async function createTags(tagList) {
   if (tagList.length === 0) {
-    return;
+    return tagList;
   }
 
   const valuesStringInsert = tagList

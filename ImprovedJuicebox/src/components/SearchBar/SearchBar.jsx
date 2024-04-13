@@ -13,15 +13,16 @@ const SearchBar = ({ handleSearch }) => {
     };
 
     return (
-      <div>
+      <div className="searchBar">
         <input
-          id="search bar"
           label="Search for an author or tag..."
           value={searchQuery}
           onChange={handleInputChange}
+          className="searchBarInput"
         />
         <button
         onClick={handleButtonClick}
+        className="searchBarButton"
         >
           Search
         </button>
