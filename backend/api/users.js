@@ -5,9 +5,10 @@ const {
   getAllUsers,
   getUserByUsername,
   deleteUser,
+  getUserById
 } = require("../db/dbMethods");
 const jwt = require("jsonwebtoken");
-const { getUserById } = require("../db/dbMethods");
+const { JWT_SECRET } = process.env;
 
 // GET /api/users
 usersRouter.get("/", async (req, res, next) => {
@@ -43,19 +44,15 @@ usersRouter.post("/login", async (req, res, next) => {
     const { username, password } = req.body;
     const user = await getUserByUsername(username);
 
-    if (user && user.password === password) {
-      const token = jwt.sign(
-        { id: user.id, username: username },
-        process.env.JWT_SECRET,
-        { expiresIn: "1w" }
-      );
-      res.send({ message: "You're logged in!", token });
-    } else {
-      next({
-        name: "IncorrectCredentialsError",
-        message: "Username or password is incorrect",
-      });
+    if (!user || password !== user.password) {
+      return res.status(404).json({ message: 'Invalid username or passoword'});
     }
+    const token = jwt.sign(
+      { id: user.id, username: username },
+      JWT_SECRET,
+      { expiresIn: "1w" }
+    );
+    res.status(200).send({ message: "You're logged in!", token });
   } catch ({ name, message }) {
     console.error(name, message);
     next(name, message);
@@ -74,7 +71,7 @@ usersRouter.post("/register", async (req, res, next) => {
       });
     } else {
       const user = await createUser({ username, password, name, location });
-      res.send({ message: "Thank you for signing up", user: user });
+      res.status(200).send({ message: "Thank you for signing up", user: user });
     }
   } catch ({ name, message }) {
     next({ name, message });
@@ -86,7 +83,7 @@ usersRouter.delete("/delete", async (req, res, next) => {
   try {
     const { username } = req.body;
     await deleteUser(username);
-    res.send({ message: "User deleted successfully" });
+    res.status(200).send({ message: "User deleted successfully" });
   } catch (error) {
     console.error(error);
     next(error);

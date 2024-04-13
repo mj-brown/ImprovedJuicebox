@@ -44,6 +44,16 @@ export const apiSlice = createApi({
         },
       }),
     }),
+    createPost: builder.mutation({
+      query: ({ title, content, tags }) => ({
+        url: "/posts",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: { title, content, tags },
+      }),
+    }),
   }),
 });
 
@@ -53,4 +63,5 @@ export const {
   useLoginUserMutation,
   useRegisterUserMutation,
   useGetAccountDetailsQuery,
+  useCreatePostMutation,
 } = apiSlice;

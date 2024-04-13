@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../features/api/apiSlice";
 
 const Login = ({ token, onClose }) => {
@@ -8,6 +9,8 @@ const Login = ({ token, onClose }) => {
     const [userToken, setUserToken] = useState("");
     const [loginUser, { isLoading, isError }] = useLoginUserMutation();
   
+    const navigate = useNavigate();
+
     const handleUsernameChange = (e) => {
       setUsername(e.target.value);
     };
@@ -27,12 +30,17 @@ const Login = ({ token, onClose }) => {
           // Clear form fields after successful login
           setUsername("");
           setPassword("");
+          onClose();
         } else {
           console.error("Login failed: Unexpected response structure");
         }
       } catch (error) {
         console.error("Login failed:", error);
       }
+    };
+
+    const handleClose = () => {
+      navigate("/");
     };
       
     return (
@@ -84,13 +92,13 @@ const Login = ({ token, onClose }) => {
             <div>
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleLogin}
               >
                 Login
               </button>
               <button
                 name="cancel"
-                onClick={onClose}
+                onClick={handleClose}
               >
                 Cancel
               </button>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../features/api/apiSlice";
 
 const Register = ({ onClose }) => {
@@ -8,7 +9,9 @@ const Register = ({ onClose }) => {
     const [password, setPassword] = useState("");
   
     const [registerUser, { isLoading, isError }] = useRegisterUserMutation();
-  
+
+    const navigate = useNavigate();
+
     const handleUsernameChange = (e) => {
       setUsername(e.target.value);
     };
@@ -23,6 +26,10 @@ const Register = ({ onClose }) => {
   
     const handlePasswordChange = (e) => {
       setPassword(e.target.value);
+    };
+
+    const handleClose = () => {
+      navigate("/");
     };
   
     const handleRegistration = async () => {
@@ -102,7 +109,7 @@ const Register = ({ onClose }) => {
               </button>
             </div>
             <div>
-              <button name="cancel" onClick={onClose}>
+              <button name="cancel" onClick={handleClose}>
                 Cancel
               </button>
             </div>

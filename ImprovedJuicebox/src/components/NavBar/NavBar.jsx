@@ -2,59 +2,48 @@ import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import Register from "../Register/Register";
 import Login from "../Login/Login"
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = ({ handleSearch, setUserToken }) => {
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  
+    
+    const navigate = useNavigate();
+    
     const handleSignup = () => {
-      // Open the SignUpModal
-      setIsSignUpModalOpen(true);
-    };
-  
-    const handleCloseSignUpModal = () => {
-      // Close the SignUpModal
-      setIsSignUpModalOpen(false);
+      navigate("/register");
     };
   
     const handleLogin = () => {
-      // Open the LoginModal
-      setIsLoginModalOpen(true);
+      navigate("/login");
     };
-  
-    const handleCloseLoginModal = () => {
-      // Close the LoginModal
-      setIsLoginModalOpen(false);
+
+    const handleAccount = () => {
+      navigate("/account");
     };
   
     return (
       <div>
         <h1>
-          JuiceBox
+          JuceBx
         </h1>
           <div>
             <SearchBar handleSearch={handleSearch} />
           </div>
           <div>
-            <button>
-              <Link to="/account" style={{ textDecoration: "none" }}>
-                Account
-              </Link>
+            <button onClick={handleAccount}>
+              Account
             </button>
               <button
                 onClick={handleSignup}>
                 Sign up
               </button>
               <button
-                type="button"
                 onClick={handleLogin}
               >
                 Login
               </button>
           </div>
-      {isSignUpModalOpen && <Register onClose={handleCloseSignUpModal} />}
-      {isLoginModalOpen && <Login onClose={handleCloseLoginModal} />}
     </div>
     );
   };

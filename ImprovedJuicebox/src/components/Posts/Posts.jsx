@@ -8,8 +8,9 @@ const Posts = ({ filtered }) => {
   }
 
   if (error) {
-    return <p>Error loading posts: {error}</p>;
+    return <p>Error loading posts: {error.status} - {error.error}</p>;
   }
+  
 
 // Function to determine the posts to display based on whether filtered results are provided
 const getPostsToDisplay = (filtered, data) => {

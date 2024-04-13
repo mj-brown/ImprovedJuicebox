@@ -1,19 +1,26 @@
 import { useGetAccountDetailsQuery } from "../../features/api/apiSlice";
+import { useNavigate } from "react-router-dom";
 
 const Account = ({ userToken }) => {
     // Use the RTK Query hook to fetch account details
   const {
     data: accountData,
-    // error,
-    // isLoading,
+    error,
+    isLoading,
   } = useGetAccountDetailsQuery(userToken);
 
-  
+  const navigate = useNavigate();
+
+  const handleClose = () => {
+    navigate("/");
+  };
+
+  if (isLoading) return 'Loading...';
+  if (error) return `Error: ${error.message}`;
+
   return (
     <div>
       <h2>Account Details</h2>
-      {/* {isLoading && <p>Loading account details...</p>}
-      {error && <p>Error fetching account details: {error}</p>} */}
       {accountData ? (
         <div>
           <p>User Id: {accountData.id}</p>
@@ -22,6 +29,9 @@ const Account = ({ userToken }) => {
           <p>Location: {accountData.location}</p>
         </div>
       ) : null}
+      <div>
+        <button onClick={handleClose}>Close</button>
+      </div>
     </div>
   );
 };
