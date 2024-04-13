@@ -30,6 +30,8 @@ const Register = ({ onClose }) => {
         const userData = { username, password, name, location };
         await registerUser(userData).unwrap();
         // Handle successful registration, e.g., show a success message or redirect
+        onClose(); // Close the form after successful registration
+        console.log("Successful registreation", userData);
       } catch (error) {
         console.error("Registration failed:", error);
       }
@@ -37,9 +39,7 @@ const Register = ({ onClose }) => {
   
     return (
       <div>
-        <h2
-          id="modal-modal-title"
-        >
+        <h2 id="modal-modal-title">
           Sign up for an account
         </h2>
         <form
@@ -54,8 +54,6 @@ const Register = ({ onClose }) => {
           <input
             required
             id="username"
-            label=""
-            defaultValue=""
             value={username}
             maxLength={127}
             onChange={handleUsernameChange}
@@ -66,8 +64,6 @@ const Register = ({ onClose }) => {
           <input
             required
             id="name"
-            label=""
-            defaultValue=""
             value={name}
             minLength={3}
             maxLength={127}
@@ -79,8 +75,6 @@ const Register = ({ onClose }) => {
           <input
             required
             id="location"
-            label=""
-            defaultValue=""
             value={location}
             minLength={3}
             maxLength={127}
@@ -92,8 +86,6 @@ const Register = ({ onClose }) => {
           <input
             required
             id="password"
-            label=""
-            defaultValue=""
             value={password}
             minLength={3}
             maxLength={100}
@@ -105,7 +97,6 @@ const Register = ({ onClose }) => {
                 type="submit"
                 name="submit-to-signup"
                 disabled={isLoading}
-                onClick={onClose}
               >
                 {isLoading ? "Signing up..." : "Sign up"}
               </button>

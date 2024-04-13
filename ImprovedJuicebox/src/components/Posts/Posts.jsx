@@ -11,16 +11,22 @@ const Posts = ({ filtered }) => {
     return <p>Error loading posts: {error}</p>;
   }
 
-  console.log('filtered:', filtered);
-  console.log('data:', data);
+// Function to determine the posts to display based on whether filtered results are provided
+const getPostsToDisplay = (filtered, data) => {
+  if (Array.isArray(filtered) && filtered.length > 0) {
+    return filtered;
+  } else if (Array.isArray(data)) {
+    return data;
+  } else {
+    return [];
+  }
+};
 
-  // Determine the posts to display based on whether filtered results are provided
-  const postsToDisplay = filtered && filtered.length > 0 ? filtered : data || [];
-  console.log(postsToDisplay)
+
   // Render Posts based on the data
   return (
     <div className="home">
-      {postsToDisplay.map((post) => (
+      {getPostsToDisplay(filtered, data).map((post) => (
         <div className="card">
           <div className="post-title-container">
             <h4 className="post-title">{post.title}</h4>

@@ -5,7 +5,7 @@ const {
   getAllUsers,
   getUserByUsername,
   deleteUser,
-} = require("../db");
+} = require("../db/dbMethods");
 const jwt = require("jsonwebtoken");
 const { getUserById } = require("../db/dbMethods");
 

@@ -6,9 +6,10 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
 const apiRouter = require('./api');
+const client = require('./db/index');
 
 //Set default port or use the port from the .env file.
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Creates the express server
 const app = express();
@@ -22,7 +23,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 app.use(morgan('dev'));
 
 // Connecting to the database client
-const client = require('./db/index');
 client.connect();
 
 // Route handling
