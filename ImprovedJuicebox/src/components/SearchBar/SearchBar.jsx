@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./SearchBar.css";
 
 const SearchBar = ({ handleSearch }) => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -15,7 +16,6 @@ const SearchBar = ({ handleSearch }) => {
     return (
       <div className="searchBar">
         <input
-          label="Search for an author or tag..."
           value={searchQuery}
           onChange={handleInputChange}
           className="searchBarInput"

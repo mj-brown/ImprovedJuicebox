@@ -4,6 +4,7 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import { Routes, Route } from "react-router-dom";
 import Account from "./components/Account/Account";
+import "./App.css";
 
 function App() {
   const [userToken, setUserToken] = useState(null);

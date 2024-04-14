@@ -1,0 +1,94 @@
+.addPostingContainer {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-top: 1rem;
+    box-shadow: 0 0 10px #d4f2f1;
+    border-radius: 5px;
+    background-color: #378683;
+}
+
+.sectionTitleContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.sectionTitle {
+    font-size: 1.4rem;
+}
+
+.addPostFormContainer {
+    padding: 0.5rem;
+    width: 97.5%;
+    height: 350px;
+}
+
+.addPostForm {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0.5rem;
+    justify-content: space-between;
+    height: 95%;
+}
+
+.addPostHeading {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.postTitleInput {
+    margin-left: 11.25rem;
+    width: 60%;
+    height: 2.75rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px black; 
+    font-size: 15px; 
+    padding-left: 0.5rem;
+}
+
+.postContentInput {
+    margin-left: 10rem;
+    width: 60%;
+    height: 4rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px black; 
+    font-size: 15px; 
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.postTagInput {
+    margin-left: 1rem;
+    width: 60%;
+    height: 2.75rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px black; 
+    font-size: 15px; 
+    padding-left: 0.5rem;
+}
+
+.addPostButton {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    min-width: 75px;
+    width: fit-content;
+    margin: 0.45rem;
+    box-shadow: 2px 4px 6px black;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 15px;
+    justify-self: center;
+    align-self: center;
+    background-color: #374384;
+    color: #D4F2F1;
+}

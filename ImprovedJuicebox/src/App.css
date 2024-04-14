@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 900;
+    font-family: "Lemon", serif;
+    color: #D4F2F1;
+    text-shadow: 0 0 4px black;
+}
+
+p, td, input, textarea {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400; 
+}
+
+th, label {
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 800;
+}
+
+input, textarea {
+    background-color: #D4F2F1;
+}
+
+.appButton {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    min-width: 75px;
+    width: fit-content;
+    margin: 0.45rem;
+    box-shadow: 2px 4px 6px black;
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 15px;
+    background-color: #374384;
+    color: #D4F2F1;
+}
+
+.titleContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0rem;
+}
+
+.pageTitle {
+    font-size: 1.8rem;
+}

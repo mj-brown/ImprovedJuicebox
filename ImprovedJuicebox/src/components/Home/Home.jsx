@@ -3,6 +3,7 @@ import Posts from "../Posts/Posts";
 import NavBar from "../NavBar/NavBar";
 import AddPost from "../AddPost/AddPost";
 import { useGetPostsQuery } from '../../features/api/apiSlice';
+import './Home.css';
 
 const Home = () => {
   const { data, error, isLoading } = useGetPostsQuery();

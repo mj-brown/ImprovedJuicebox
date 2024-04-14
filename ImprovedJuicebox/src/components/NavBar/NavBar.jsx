@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { useNavigate } from "react-router-dom";
+import './NavBar.css';
 
 const NavBar = ({ handleSearch, setUserToken }) => {
     
@@ -19,7 +20,7 @@ const NavBar = ({ handleSearch, setUserToken }) => {
     };
   
     return (
-      <div className="navBarContainer">
+      <div className="navBarDivContainer">
         <div className="appTitleContainer">
           <h1 className="appTitle">JuceBx</h1>
         </div>

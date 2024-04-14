@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-key */
 import { useGetPostsQuery } from "../../features/api/apiSlice";
+import "./Posts.css";
+
 const Posts = ({ filtered }) => {
   const { data, error, isLoading } = useGetPostsQuery();
 

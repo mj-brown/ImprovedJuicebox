@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useCreatePostMutation } from '../../features/api/apiSlice';
+import "./AddPost.css";
 
 const AddPost = () => {
     const [title, setTitle] = useState('');
@@ -19,7 +20,7 @@ const AddPost = () => {
     };
 
     return (
-        <div className='addPostContainer'>
+        <div className='addPostingContainer'>
             <div className='sectionTitleContainer'>
                 <h3 className='sectionTitle'>Add A New Post</h3>
             </div>
@@ -43,7 +44,7 @@ const AddPost = () => {
                         Tags (comma separated):
                         <input type="text" value={tags} onChange={(e) => setTags(e.target.value)} className='postTagInput'/>
                     </label>
-                    <button type="submit" className='appButton'>Add Post</button>
+                    <button type="submit" className='addPostButton'>Add Post</button>
                 </form>
             </div>
         </div>
