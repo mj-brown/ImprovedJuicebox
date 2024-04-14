@@ -1,7 +1,13 @@
 const express = require("express");
 const postsRouter = express.Router();
 const { requireUser, requiredNotSent } = require("./utils");
-const { createPost, getAllPosts, updatePost, getPostById, deletePost } = require("../db/dbMethods");
+const {
+  createPost,
+  getAllPosts,
+  updatePost,
+  getPostById,
+  deletePost,
+} = require("../db/dbMethods");
 
 // GET /api/posts
 postsRouter.get("/", async (req, res, next) => {
@@ -68,7 +74,7 @@ postsRouter.patch("/:postId", requireUser, async (req, res, next) => {
 
 // DELETE /api/posts/:postId
 postsRouter.delete("/:postId", requireUser, async (req, res, next) => {
-    try {
+  try {
     const originalPost = await getPostById(postId);
     if (originalPost.author.id === req.user.id) {
       const post = await deletePost(req.params.postId);

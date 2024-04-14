@@ -10,9 +10,7 @@ const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    
-  },
+  extraReducers: (builder) => {},
 });
 
 export default accountSlice.reducer;

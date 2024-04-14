@@ -1,67 +1,63 @@
 .postCardContainer {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    margin-top: 1rem;
-    box-shadow: 0 0 10px #D4F2F1;
-    border-radius: 5px;
-    background-color: #378683;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin-top: 1rem;
+  box-shadow: 0 0 10px #d4f2f1;
+  border-radius: 5px;
+  background-color: #378683;
 }
 
 .postCard {
-    width: 96.75%;
-    margin: 0.25rem;
-    padding: 0.25rem 0.25rem 0.25rem 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border-radius: 5px;
-    background-color: #D4F2F1;
-    box-shadow: 0 0 3px black;
+  width: 96.75%;
+  margin: 0.25rem;
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  background-color: #d4f2f1;
+  box-shadow: 0 0 3px black;
 }
 
 .postTitleContainer {
-    margin: 0.1rem 0rem;
+  margin: 0.1rem 0rem;
 }
 
 .postTitle {
-    color: #374384;
-    text-shadow: 0 0 0 black;
+  color: #374384;
+  text-shadow: 0 0 0 black;
 }
 
 .postAuthorContainer {
-    margin: 0.1rem 0rem;
+  margin: 0.1rem 0rem;
 }
 
 .postAuthor {
-    margin-left: 0.3rem;
-    font-style: italic;
+  margin-left: 0.3rem;
+  font-style: italic;
 }
 
 .postContentContainer {
-    margin: 0.1rem 0rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    width: 85%;
-}
-
-.postTitle {
-    color: 
+  margin: 0.1rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 85%;
 }
 
 .postContent {
-    margin-left: 0.3rem;
-    margin-bottom: 0.1rem;
+  margin-left: 0.3rem;
+  margin-bottom: 0.1rem;
 }
 
 .postTags {
-    margin-left: 0.3rem;
-    margin-top: 0.1rem;
-    font-style: italic;
+  margin-left: 0.3rem;
+  margin-top: 0.1rem;
+  font-style: italic;
 }

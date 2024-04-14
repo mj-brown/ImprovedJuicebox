@@ -10,21 +10,23 @@ const Posts = ({ filtered }) => {
   }
 
   if (error) {
-    return <p>Error loading posts: {error.status} - {error.error}</p>;
+    return (
+      <p>
+        Error loading posts: {error.status} - {error.error}
+      </p>
+    );
   }
-  
 
-// Function to determine the posts to display based on whether filtered results are provided
-const getPostsToDisplay = (filtered, data) => {
-  if (Array.isArray(filtered) && filtered.length > 0) {
-    return filtered;
-  } else if (Array.isArray(data)) {
-    return data;
-  } else {
-    return [];
-  }
-};
-
+  // Function to determine the posts to display based on whether filtered results are provided
+  const getPostsToDisplay = (filtered, data) => {
+    if (Array.isArray(filtered) && filtered.length > 0) {
+      return filtered;
+    } else if (Array.isArray(data)) {
+      return data;
+    } else {
+      return [];
+    }
+  };
 
   // Render Posts based on the data
   return (
@@ -39,9 +41,11 @@ const getPostsToDisplay = (filtered, data) => {
           </div>
           <div className="postContentContainer">
             <p className="postContent">{post.content}</p>
-            <p className="postTags">{post.tags.map((tag) => (
-              <span key={tag.id}>{tag.name}</span>
-            ))}</p>
+            <p className="postTags">
+              {post.tags.map((tag) => (
+                <span key={tag.id}>{tag.name}</span>
+              ))}
+            </p>
           </div>
         </div>
       ))}

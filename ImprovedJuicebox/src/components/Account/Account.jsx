@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Account.css";
 
 const Account = ({ userToken }) => {
-    // Use the RTK Query hook to fetch account details
+  // Use the RTK Query hook to fetch account details
   const {
     data: accountData,
     error,
@@ -16,7 +16,7 @@ const Account = ({ userToken }) => {
     navigate("/");
   };
 
-  if (isLoading) return 'Loading...';
+  if (isLoading) return "Loading...";
   if (error) return `Error: ${error.message}`;
 
   return (
@@ -44,12 +44,13 @@ const Account = ({ userToken }) => {
           </table>
         ) : null}
         <div>
-          <button onClick={handleClose} className="appButton">Close</button>
+          <button onClick={handleClose} className="appButton">
+            Close
+          </button>
         </div>
       </div>
     </div>
   );
-  
 };
 
 export default Account;

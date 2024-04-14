@@ -5,7 +5,7 @@ const {
   getAllUsers,
   getUserByUsername,
   deleteUser,
-  getUserById
+  getUserById,
 } = require("../db/dbMethods");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
@@ -45,13 +45,11 @@ usersRouter.post("/login", async (req, res, next) => {
     const user = await getUserByUsername(username);
 
     if (!user || password !== user.password) {
-      return res.status(404).json({ message: 'Invalid username or passoword'});
+      return res.status(404).json({ message: "Invalid username or passoword" });
     }
-    const token = jwt.sign(
-      { id: user.id, username: username },
-      JWT_SECRET,
-      { expiresIn: "1w" }
-    );
+    const token = jwt.sign({ id: user.id, username: username }, JWT_SECRET, {
+      expiresIn: "1w",
+    });
     res.status(200).send({ message: "You're logged in!", token });
   } catch ({ name, message }) {
     console.error(name, message);

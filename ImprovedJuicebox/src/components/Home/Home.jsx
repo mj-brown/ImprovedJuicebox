@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Posts from "../Posts/Posts";
 import NavBar from "../NavBar/NavBar";
 import AddPost from "../AddPost/AddPost";
-import { useGetPostsQuery } from '../../features/api/apiSlice';
-import './Home.css';
+import { useGetPostsQuery } from "../../features/api/apiSlice";
+import "./Home.css";
 
 const Home = () => {
   const { data, error, isLoading } = useGetPostsQuery();
@@ -27,24 +27,23 @@ const Home = () => {
     }
   };
 
-    return (
-        <div className="appBody">
-            <div className="navBarContainer">
-                <NavBar handleSearch={handleSearch}/>
-            </div>
-            {isLoading && <p>Loading...</p>}
-            {error && <p>Error loading posts: {error}</p>}
-            <div className="appMain">
-                <div className="addPostContainer">
-                    <AddPost />
-                </div>
-                <div className="PostContainer">
-                    <Posts filtered={filteredPosts} />
-                </div>
-            </div>
+  return (
+    <div className="appBody">
+      <div className="navBarContainer">
+        <NavBar handleSearch={handleSearch} />
+      </div>
+      {isLoading && <p>Loading...</p>}
+      {error && <p>Error loading posts: {error}</p>}
+      <div className="appMain">
+        <div className="addPostContainer">
+          <AddPost />
         </div>
-    )
-
+        <div className="PostContainer">
+          <Posts filtered={filteredPosts} />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Home;

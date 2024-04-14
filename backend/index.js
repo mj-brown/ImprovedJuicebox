@@ -1,12 +1,12 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const cors = require('cors');
-const path = require('path');
-const apiRouter = require('./api');
-const client = require('./db/index');
+const express = require("express");
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const cors = require("cors");
+const path = require("path");
+const apiRouter = require("./api");
+const client = require("./db/index");
 
 //Set default port or use the port from the .env file.
 const PORT = 3000;
@@ -19,16 +19,16 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'dist')));
-app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, "dist")));
+app.use(morgan("dev"));
 
 // Connecting to the database client
 client.connect();
 
 // Route handling
-app.use('/api', apiRouter);
+app.use("/api", apiRouter);
 
 // Start server
 app.listen(PORT, () => {
-    console.log('Server is listening on PORT:', PORT);
+  console.log("Server is listening on PORT:", PORT);
 });
