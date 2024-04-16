@@ -63,14 +63,14 @@ async function getAllUsers() {
   }
 }
 
-async function getUserById(userId) {
+async function getUserById(id) {
   try {
     const {
       rows: [user],
     } = await client.query(`
         SELECT id, username, name, location, active
         FROM users
-        WHERE id=${userId}
+        WHERE id=${id}
       `);
 
     if (!user) {

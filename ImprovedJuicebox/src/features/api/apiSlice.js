@@ -36,7 +36,7 @@ export const apiSlice = createApi({
     }),
     getAccountDetails: builder.query({
       query: (userToken) => ({
-        url: "/users/:userId",
+        url: "/users/me",
         method: "GET",
         headers: {
           "Content-Type": "application/json",

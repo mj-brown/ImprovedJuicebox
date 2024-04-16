@@ -16,7 +16,7 @@ apiRouter.use(async (req, res, next) => {
     try {
       const parsedToken = jwt.verify(token, JWT_SECRET);
       const id = parsedToken && parsedToken.id;
-
+      console.log(id);
       if (id) {
         req.user = await getUserById(id);
         next();

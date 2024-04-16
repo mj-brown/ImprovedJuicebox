@@ -9,11 +9,13 @@ const {
 } = require("../db/dbMethods");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
+const { requireUser } = require("./utils")
 
 // GET /api/users
 usersRouter.get("/", async (req, res, next) => {
   try {
     const users = await getAllUsers();
+    console.log(users);
     res.send({ users });
   } catch ({ error }) {
     next({ error });
@@ -21,17 +23,20 @@ usersRouter.get("/", async (req, res, next) => {
 });
 
 // GET /api/users/:userid
-usersRouter.get("/:userid", async (req, res, next) => {
+usersRouter.get("/:userId", async (req, res, next) => {
   try {
     const { userId } = req.params;
-    if (userId !== req.user.userId) {
-      return res.status(403).json({ messag: "Unauthorized access" });
+    console.log(typeof +userId, req.user.id)
+    
+    if (+userId !== req.user.id) {
+      return res.status(403).json({ message: "Unauthorized access" });
     }
-
+    
     const user = await getUserById(userId);
     if (!user) {
-      res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "User not found" });
     }
+    res.json(user);
   } catch ({ name, message }) {
     console.error(name, message);
     next(name, message);
@@ -56,6 +61,15 @@ usersRouter.post("/login", async (req, res, next) => {
     next(name, message);
   }
 });
+
+usersRouter.get("/me", requireUser, async (req, res, next) => {
+  try {
+    
+    res.send(req.user);
+  } catch (error) {
+    next (error);
+  }
+ });
 
 // POST /api/users/register
 usersRouter.post("/register", async (req, res, next) => {
